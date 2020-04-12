@@ -2,4 +2,4 @@
 
 ## stacked bar
 
-![](https://raw.githubusercontent.com/basyura/sample-chart-js/master/images/stackedbar.png)
+![](https://raw.githubusercontent.com/basyura/sample-js/master/plain/stackedbar/images/stackedbar.png)
