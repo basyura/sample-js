@@ -2,6 +2,8 @@ import React, { useContext } from "react";
 import AppContext from "./AppContext";
 
 const FormPane = () => {
+  console.log("FormPane#start");
+
   const titleRef = React.createRef();
   const descRef = React.createRef();
 

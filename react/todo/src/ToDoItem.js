@@ -3,6 +3,7 @@ import "./TodoItem.css";
 
 class ToDoItem extends Component {
   render() {
+    console.log("ToDoItem#start");
     const { title, description, ...props } = this.props;
 
     return (

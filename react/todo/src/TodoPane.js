@@ -3,6 +3,8 @@ import ToDoItem from "./ToDoItem";
 import Context from "./AppContext";
 
 const ToDoPane = () => {
+  console.log("ToDoPane#start");
+
   const [toDoList, setToDoList] = useContext(Context) || [];
 
   const removeTodo = (item) => {

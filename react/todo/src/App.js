@@ -5,9 +5,13 @@ import FormPane from "./FormPane";
 import "./App.css";
 
 function App() {
-  const [toDoList, setToDoList] = useState(
-    JSON.parse(localStorage.getItem("todoList")) || []
-  );
+  const fetchTodo = () => {
+    console.log("App#fetchTodo");
+    return JSON.parse(localStorage.getItem("todoList")) || [];
+  };
+
+  const results = fetchTodo();
+  const [toDoList, setToDoList] = useState(results);
 
   return (
     <div className="App">
