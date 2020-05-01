@@ -1,7 +1,7 @@
 import React, { Component } from "react";
-import "./TodoListItem.css";
+import "./TodoItem.css";
 
-class TodoListItem extends Component {
+class ToDoItem extends Component {
   render() {
     const { title, description, ...props } = this.props;
 
@@ -14,4 +14,4 @@ class TodoListItem extends Component {
   }
 }
 
-export default TodoListItem;
+export default ToDoItem;
