@@ -11,6 +11,8 @@ function App() {
   console.log("#   App#start   #");
   console.log("#################");
 
+  Store.fetch();
+
   const [store, dispatch] = useReducer(reducers, Store);
 
   return (
