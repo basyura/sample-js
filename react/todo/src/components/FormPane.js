@@ -1,5 +1,5 @@
 import React, { useContext } from "react";
-import AppContext from "./AppContext";
+import AppContext from "../AppContext";
 
 const FormPane = () => {
   console.log("FormPane#start");
@@ -7,18 +7,18 @@ const FormPane = () => {
   const titleRef = React.createRef();
   const descRef = React.createRef();
 
-  const { toDoList, setToDoList } = useContext(AppContext);
+  const { dispatch } = useContext(AppContext);
 
   const addTodo = (evnt) => {
     // cancel submit
     evnt.preventDefault();
-    const news = toDoList.concat({
-      title: titleRef.current.value,
-      description: descRef.current.value,
+    dispatch({
+      type: "add",
+      todo: {
+        title: titleRef.current.value,
+        description: descRef.current.value,
+      },
     });
-    setToDoList(news);
-    localStorage.setItem("todoList", JSON.stringify(news));
-
     titleRef.current.value = "";
     descRef.current.value = "";
   };

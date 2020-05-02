@@ -1,36 +1,24 @@
-import React, { useState } from "react";
+import React, { useReducer } from "react";
 import AppContext from "./AppContext";
-import ToDoPane from "./TodoPane";
-import FormPane from "./FormPane";
+import Header from "./components/Header";
+import Content from "./components/Content";
+import Store from "./Store";
+import reducers from "./reducers";
 import "./App.css";
 
 function App() {
-  const fetchTodo = () => {
-    console.log("App#fetchTodo");
-    return JSON.parse(localStorage.getItem("todoList")) || [];
-  };
+  console.log("#################");
+  console.log("#   App#start   #");
+  console.log("#################");
 
-  const results = fetchTodo();
-  const [toDoList, setToDoList] = useState(results);
+  const [store, dispatch] = useReducer(reducers, Store);
 
   return (
     <div className="App">
-      <div>create-react-appを使ってReactでToDoリストを作成するぞ</div>
-      <div>https://qiita.com/rioc/items/8723c236e10d989e827d</div>
-      <hr />
-      <div>
-        <AppContext.Provider value={{ toDoList, setToDoList }}>
-          <div style={{ display: "flex" }}>
-            <div style={{}}>
-              <FormPane />
-              <ToDoPane />
-            </div>
-            <div style={{ border: "1px solid gray" }}>
-              <span>hello</span>
-            </div>
-          </div>
-        </AppContext.Provider>
-      </div>
+      <AppContext.Provider value={{ store, dispatch }}>
+        <Header />
+        <Content />
+      </AppContext.Provider>
     </div>
   );
 }

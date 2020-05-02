@@ -1,7 +1,19 @@
-class Store {}
+class Store {
+  constructor() {
+    this.toDoList = [];
+  }
 
-const [toDoList, setToDoList] = useState(
-  JSON.parse(localStorage.getItem("todoList")) || []
-);
+  initialize = () => {
+    this.toDoList = this.fetch();
+  };
 
-const Store = new Store();
+  fetch = () => {
+    console.log("Store#fetch");
+    return JSON.parse(localStorage.getItem("todoList")) || [];
+  };
+}
+
+const store = new Store();
+store.initialize();
+
+export default store;
