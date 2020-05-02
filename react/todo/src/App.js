@@ -19,10 +19,15 @@ function App() {
       <div>https://qiita.com/rioc/items/8723c236e10d989e827d</div>
       <hr />
       <div>
-        <AppContext.Provider value={[toDoList, setToDoList]}>
-          <div>
-            <FormPane />
-            <ToDoPane />
+        <AppContext.Provider value={{ toDoList, setToDoList }}>
+          <div style={{ display: "flex" }}>
+            <div style={{}}>
+              <FormPane />
+              <ToDoPane />
+            </div>
+            <div style={{ border: "1px solid gray" }}>
+              <span>hello</span>
+            </div>
           </div>
         </AppContext.Provider>
       </div>

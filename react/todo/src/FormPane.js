@@ -7,7 +7,7 @@ const FormPane = () => {
   const titleRef = React.createRef();
   const descRef = React.createRef();
 
-  const [toDoList, setToDoList] = useContext(AppContext);
+  const { toDoList, setToDoList } = useContext(AppContext);
 
   const addTodo = (evnt) => {
     // cancel submit
