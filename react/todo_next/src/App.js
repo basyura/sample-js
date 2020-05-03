@@ -2,6 +2,7 @@ import React from "react";
 import Header from "./components/Header";
 import Content from "./components/Content";
 import ToDoContainer from "./containers/ToDoContainer";
+import Initailizer from "./components/Initializer";
 import "./App.css";
 
 function App() {
@@ -9,13 +10,12 @@ function App() {
   console.log("#   App#start   #");
   console.log("#################");
 
-  const list = JSON.parse(localStorage.getItem("todoList")) || [];
-
   return (
     <div className="App">
-      <ToDoContainer.Provider initialState={list}>
+      <ToDoContainer.Provider>
         <Header />
         <Content />
+        <Initailizer />
       </ToDoContainer.Provider>
     </div>
   );

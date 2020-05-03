@@ -1,10 +1,8 @@
 import { useState } from "react";
 import { createContainer } from "unstated-next";
 
-const useToDoContainer = (initialiState) => {
-  console.log("useToDoContainer#start");
-
-  const [toDoList, setToDoList] = useState(initialiState);
+const useToDoContainer = () => {
+  const [toDoList, setToDoList] = useState([]);
   const [isInitialized, setInitialized] = useState(false);
 
   const add = (todo) => {
