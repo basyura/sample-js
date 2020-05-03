@@ -14,7 +14,7 @@ const ToDoPane = () => {
           key={todo.key}
           title={todo.title}
           description={todo.description}
-          onClick={() => container.remove(todo)}
+          onClick={() => container.selectTodo(todo)}
         />
       ))}
     </div>

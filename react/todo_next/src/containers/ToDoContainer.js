@@ -4,6 +4,7 @@ import { createContainer } from "unstated-next";
 const useToDoContainer = () => {
   const [toDoList, setToDoList] = useState([]);
   const [isInitialized, setInitialized] = useState(false);
+  const [selectedToDoList, setSelectedToDoList] = useState([]);
 
   const add = (todo) => {
     console.log("ToDoContainer#add " + JSON.stringify(todo));
@@ -24,6 +25,14 @@ const useToDoContainer = () => {
     setToDoList(news);
   };
 
+  const selectTodo = (todo) => {
+    // duplicate check
+    if (selectedToDoList.find((v) => v.key === todo.key)) {
+      return;
+    }
+    setSelectedToDoList([...selectedToDoList, todo]);
+  };
+
   /* private */
 
   const save = (toDoList) => {
@@ -38,7 +47,16 @@ const useToDoContainer = () => {
     );
   };
 
-  return { toDoList, add, remove, fetch, isInitialized, setInitialized };
+  return {
+    toDoList,
+    add,
+    remove,
+    fetch,
+    isInitialized,
+    setInitialized,
+    selectedToDoList,
+    selectTodo,
+  };
 };
 
 const ToDoContainer = createContainer(useToDoContainer);
