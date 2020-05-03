@@ -1,5 +1,4 @@
 import React from "react";
-import "./TodoItem.css";
 import ToDoContainer from "../containers/ToDoContainer";
 
 const DetailPane = () => {
@@ -11,7 +10,9 @@ const DetailPane = () => {
     <div>
       {todoList.map((todo) => (
         <div className="ToDoListItem" key={todo.key}>
-          <div className="ToDoListItem-title">{todo.title}</div>
+          <div className="ToDoListItem-title">
+            <span>{todo.title}</span>
+          </div>
           <div className="ToDoListItem-description">{todo.description}</div>
         </div>
       ))}

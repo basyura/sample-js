@@ -12,9 +12,11 @@ const ToDoPane = () => {
       {container.toDoList.map((todo) => (
         <ToDoItem
           key={todo.key}
-          title={todo.title}
-          description={todo.description}
-          onClick={() => container.selectTodo(todo)}
+          todo={todo}
+          onClick={(e) => {
+            container.selectTodo(todo);
+            e.stopPropagation();
+          }}
         />
       ))}
     </div>

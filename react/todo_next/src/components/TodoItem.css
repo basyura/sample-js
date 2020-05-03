@@ -20,3 +20,9 @@
   word-wrap: break-word;
   padding: 8px;
 }
+
+.ToDoListItem-wrap {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}

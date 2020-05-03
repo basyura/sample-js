@@ -15,17 +15,18 @@ const useToDoContainer = () => {
   };
 
   const remove = (todo) => {
-    console.log("ToDoContainer#remove " + JSON.stringify(todo));
+    console.log("ToDoContainer#remove " + todo.key);
     save(toDoList.filter((x) => x.key !== todo.key));
   };
 
   const fetch = () => {
-    console.log("Store#fetch");
+    console.log("ToDoContainer#fetch");
     const news = JSON.parse(localStorage.getItem("todoList")) || [];
     setToDoList(news);
   };
 
   const selectTodo = (todo) => {
+    console.log("ToDoContainer#selectTodo");
     // duplicate check
     if (selectedToDoList.find((v) => v.key === todo.key)) {
       return;
