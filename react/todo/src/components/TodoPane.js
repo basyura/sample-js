@@ -11,7 +11,7 @@ const ToDoPane = () => {
     <div>
       {store.toDoList.map((todo) => (
         <ToDoItem
-          key={todo.title}
+          key={todo.key}
           title={todo.title}
           description={todo.description}
           onClick={() => dispatch({ type: "remove", todo: todo })}
