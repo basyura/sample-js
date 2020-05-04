@@ -34,6 +34,11 @@ const useToDoContainer = () => {
     setSelectedToDoList([...selectedToDoList, todo]);
   };
 
+  const unselectTodo = (todo) => {
+    console.log("ToDoContainer#unselectToDo");
+    setSelectedToDoList(selectedToDoList.filter((v) => v.key !== todo.key));
+  };
+
   /* private */
 
   const save = (toDoList) => {
@@ -57,6 +62,7 @@ const useToDoContainer = () => {
     setInitialized,
     selectedToDoList,
     selectTodo,
+    unselectTodo,
   };
 };
 

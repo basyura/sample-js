@@ -17,7 +17,12 @@
 }
 
 .ToDoListItem-description {
-  word-wrap: break-word;
+  word-wrap: break-all;
+  padding: 8px;
+}
+
+.ToDoListItem-description-detail {
+  text-overflow: ellipsis;
   padding: 8px;
 }
 
