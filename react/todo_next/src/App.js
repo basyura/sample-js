@@ -3,6 +3,7 @@ import Header from "./components/Header";
 import Content from "./components/Content";
 import ToDoContainer from "./containers/ToDoContainer";
 import Initailizer from "./components/Initializer";
+import ModalWindow from "./components/ModalWindow";
 import "./App.css";
 
 function App() {
@@ -16,6 +17,7 @@ function App() {
         <Header />
         <Content />
         <Initailizer />
+        <ModalWindow />
       </ToDoContainer.Provider>
     </div>
   );
