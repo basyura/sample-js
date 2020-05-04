@@ -21,6 +21,11 @@ const Header = () => {
             unstated-next
           </a>
         </li>
+        <li>
+          <a href="https://qiita.com/keyyang0723/items/08c96a5cbc02ef741796">
+            React-modalで簡易モーダル作成
+          </a>
+        </li>
       </ul>
     </div>
   );

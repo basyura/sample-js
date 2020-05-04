@@ -15,6 +15,8 @@ const ToDoPane = () => {
           todo={todo}
           onClick={(e) => {
             container.selectTodo(todo);
+            container.openModal({ todo });
+
             e.stopPropagation();
           }}
         />

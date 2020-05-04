@@ -5,6 +5,8 @@ const useToDoContainer = () => {
   const [toDoList, setToDoList] = useState([]);
   const [isInitialized, setInitialized] = useState(false);
   const [selectedToDoList, setSelectedToDoList] = useState([]);
+  const [modalState, setModalState] = useState(false);
+  const [modalToDo, setModalToDo] = useState([]);
 
   const add = (todo) => {
     console.log("ToDoContainer#add " + JSON.stringify(todo));
@@ -39,6 +41,12 @@ const useToDoContainer = () => {
     setSelectedToDoList(selectedToDoList.filter((v) => v.key !== todo.key));
   };
 
+  const openModal = (todo) => {
+    console.log("modal todo: " + JSON.stringify(todo));
+    setModalToDo([todo]);
+    setModalState(true);
+  };
+
   /* private */
 
   const save = (toDoList) => {
@@ -63,6 +71,10 @@ const useToDoContainer = () => {
     selectedToDoList,
     selectTodo,
     unselectTodo,
+    setModalState,
+    modalState,
+    openModal,
+    modalToDo,
   };
 };
 
