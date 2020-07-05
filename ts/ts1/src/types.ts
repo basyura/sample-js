@@ -1,11 +1,10 @@
-
 interface BaseNode<T> {
   type: T;
   name: string;
 }
 
 // ファイルは type と name のみを持つ
-export interface FileNode extends BaseNode<"file"> {}
+export type FileNode = BaseNode<"file">;
 // ディレクトリは追加でノードの配列を持つ
 export interface DirectoryNode extends BaseNode<"directory"> {
   children: TreeNode[];

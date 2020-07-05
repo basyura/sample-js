@@ -5,7 +5,11 @@ import { DirectoryNode, Options } from "./types";
 
 type Writer = (...args: any[]) => void;
 
-export const main = (argv: string[], stdout: Writer, stderr: Writer): void => {
+export const main = (
+  argv: string[],
+  stdout: Writer,
+  stderr: Writer
+): number => {
   const cli = meow(
     `
     Usage
@@ -20,16 +24,16 @@ export const main = (argv: string[], stdout: Writer, stderr: Writer): void => {
         level: {
           type: "number",
           alias: "L",
-          default: Infinity
-        }
+          default: Infinity,
+        },
       },
-      argv
+      argv,
     }
   );
   const dir = cli.input[0] || ".";
 
   const options: Options = {
-    level: cli.flags.level
+    level: cli.flags.level,
   };
 
   if (options.level < 1) {

@@ -3,7 +3,7 @@ import { DirectoryNode, TreeNode, Options } from "./types";
 import fs from "fs";
 import path from "path";
 
-export const read = (dir: string, options: Options) : DirectoryNode => {
+export const read = (dir: string, options: Options): DirectoryNode => {
   let stat: fs.Stats;
   try {
     stat = fs.statSync(dir);
