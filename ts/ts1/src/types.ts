@@ -1,4 +1,3 @@
-export type TODO_any = any;
 
 interface BaseNode<T> {
   type: T;
@@ -18,6 +17,6 @@ export interface Options {
   level: number;
 }
 
-export interface SymlinkNode extends BaseNode<'symlink'> {
-  link: string
+export interface SymlinkNode extends BaseNode<"symlink"> {
+  link: string;
 }
