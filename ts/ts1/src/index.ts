@@ -1,8 +1,11 @@
-const meow = require("meow");
-const { read } = require("./read");
-const { format } = require("./format");
+import meow from "meow";
+import { read } from "./read";
+import { format } from "./format";
+import { DirectoryNode, Options } from "./types";
 
-exports.main = (argv, stdout, stderr) => {
+type Writer = (...args: any[]) => void;
+
+export const main = (argv: string[], stdout: Writer, stderr: Writer) => {
   const cli = meow(
     `
     Usage
@@ -25,7 +28,7 @@ exports.main = (argv, stdout, stderr) => {
   );
   const dir = cli.input[0] || ".";
 
-  const options = {
+  const options: Options = {
     level: cli.flags.level
   };
 
@@ -34,7 +37,7 @@ exports.main = (argv, stdout, stderr) => {
     return 1;
   }
 
-  let root;
+  let root: DirectoryNode;
   try {
     root = read(dir, options);
   } catch (e) {

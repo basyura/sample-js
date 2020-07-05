@@ -1,8 +1,11 @@
-exports.format = node => {
+import { TreeNode, DirectoryNode } from "./types";
+import chalk from "chalk";
+
+export const format = (node: DirectoryNode) => {
   return `${node.name}\n${formatEach(node.children, "")}`;
 };
 
-const formatEach = (nodes, prefix) => {
+const formatEach = (nodes: TreeNode[], prefix: string) => {
   let result = "";
 
   nodes.forEach((node, index) => {
@@ -19,12 +22,13 @@ const formatEach = (nodes, prefix) => {
   return result;
 };
 
-const chalk = require("chalk");
-const displayName = node => {
+const displayName = (node: TreeNode) => {
   switch (node.type) {
     case "file":
       return node.name;
     case "directory":
       return chalk.cyan(node.name);
+    case "symlink":
+      return `${chalk.green(node.name)} -> ${chalk.cyan(node.link)}`;
   }
 };

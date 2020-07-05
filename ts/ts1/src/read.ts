@@ -1,14 +1,21 @@
-const fs = require("fs");
+import { DirectoryNode, TreeNode, Options } from "./types";
 
-exports.read = (dir, options) => {
-  let stat;
+import fs from "fs";
+import path from "path";
+
+export const read = (dir: string, options: Options) => {
+  let stat: fs.Stats;
   try {
     stat = fs.statSync(dir);
   } catch (e) {
     throw new Error(`"${dir}" can't be opened as a directory.`);
   }
 
-  const root = {
+  if (!stat.isDirectory()) {
+    throw new Error(`"${dir}" can't be opened as a directory.`);
+  }
+
+  const root: DirectoryNode = {
     type: "directory",
     name: dir,
     children: readDirectory(dir, 1, options)
@@ -17,9 +24,7 @@ exports.read = (dir, options) => {
   return root;
 };
 
-const path = require("path");
-
-const readDirectory = (dir, depth, options) => {
+const readDirectory = (dir: string, depth: number, options: Options) => {
   if (options.level < depth) {
     return [];
   }
@@ -28,7 +33,7 @@ const readDirectory = (dir, depth, options) => {
     withFileTypes: true
   });
 
-  const nodes = [];
+  const nodes: TreeNode[] = [];
   dirents.forEach(dirent => {
     if (dirent.name.startsWith(".")) {
       return;
@@ -43,6 +48,12 @@ const readDirectory = (dir, depth, options) => {
         type: "directory",
         name: dirent.name,
         children: readDirectory(path.join(dir, dirent.name), depth + 1, options)
+      });
+    } else if (dirent.isSymbolicLink()) {
+      nodes.push({
+        type: "symlink",
+        name: dirent.name,
+        link: fs.readlinkSync(path.join(dir, dirent.name))
       });
     }
   });
