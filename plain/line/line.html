@@ -1,0 +1,65 @@
+<html>
+  <head>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@2.8.0"></script>
+  </head>
+  <script>
+    window.onload = function () {
+      var ctx = document.getElementById("myChart").getContext("2d");
+      var chart = new Chart(ctx, {
+        // The type of chart we want to create
+        type: "line",
+
+        // The data for our dataset
+        data: {
+          labels: [
+            "8/1",
+            "8/2",
+            "8/3",
+            "8/4",
+            "8/5",
+            "8/6",
+            "8/7",
+          ],
+          datasets: [
+            {
+              label: "70%",
+              fill: false,
+              backgroundColor: "blue",
+              borderColor: "blue",
+              data: [0, 10, 5, 2, 20, 25, 33],
+            },
+            {
+              label: "90%",
+              fill: false,
+              backgroundColor: "orange",
+              borderColor: "orange",
+              data: [5, 15, 15, 25, 25, 30, 35],
+            },
+            {
+              label: "99%",
+              fill: false,
+              backgroundColor: "purple",
+              borderColor: "purple",
+              data: [15, 25, 25, 35, 35, 40, 45],
+            },
+            {
+              label: "max",
+              fill: false,
+              backgroundColor: "red",
+              borderColor: "red",
+              data: [35, 45, 45, 55, 55, 60, 65],
+            },
+          ],
+        },
+
+        // Configuration options go here
+        options: {},
+      });
+    };
+  </script>
+  <body>
+    <div style="padding: 10px;">
+      <canvas id="myChart"></canvas>
+    </div>
+  </body>
+</html>
